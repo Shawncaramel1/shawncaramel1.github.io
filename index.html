@@ -24,9 +24,22 @@
             padding: 20px;
         }
         
-        .container {
-            max-width: 800px;
+        .wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .main-content {
+            flex: 2;
+        }
+        
+        .sidebar {
+            flex: 1;
+        }
+        
+        .container {
             background: white;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -134,181 +147,381 @@
         .note strong {
             color: #856404;
         }
+        
+        /* SIDEBAR STYLES */
+        .sidebar-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-box h3 {
+            color: #1a1a1a;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-box p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .recent-posts-list {
+            list-style: none;
+            padding: 0;
+            line-height: 2;
+        }
+        
+        .recent-posts-list li {
+            margin-bottom: 10px;
+        }
+        
+        .recent-posts-list a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .recent-posts-list a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            background: #e3f2fd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #667eea;
+            display: inline-block;
+        }
+        
+        .tag:hover {
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .subscribe-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .subscribe-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background: #764ba2;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .main-content, .sidebar {
+                flex: 1;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            main {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>🎨 My Creative Blog</h1>
-            <p>Sharing ideas, tutorials, and random thoughts</p>
-        </header>
+    <div class="wrapper">
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="container">
+                <header>
+                    <h1>🎨 My Creative Blog</h1>
+                    <p>Sharing ideas, tutorials, and random thoughts</p>
+                </header>
 
-        <main>
-            <!-- In-article ad example -->
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <ins class="adsbygoogle"
-                     style="display:block; text-align:center;"
-                     data-ad-layout="in-article"
-                     data-ad-format="fluid"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXX"
-                     data-ad-slot="YOUR_AD_SLOT_ID_1"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <main>
+                    <!-- In-article ad example -->
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <ins class="adsbygoogle"
+                             style="display:block; text-align:center;"
+                             data-ad-layout="in-article"
+                             data-ad-format="fluid"
+                             data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXX"
+                             data-ad-slot="YOUR_AD_SLOT_ID_1"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <article>
+                        <h2>Welcome to My Creative Blog! 🚀</h2>
+                        <p class="post-date">Published: June 1, 2026</p>
+                        <p>
+                            Welcome to my space on the internet! I'm excited to share my journey, ideas, and 
+                            experiences with you. This blog is all about creativity, learning, and growth.
+                        </p>
+                        <p>
+                            Whether you're here for tech tutorials, design inspiration, or just to read about 
+                            my random thoughts, I hope you find something valuable. I'm committed to posting 
+                            high-quality, original content regularly.
+                        </p>
+                        <div class="note">
+                            <strong>📝 Note for creators:</strong> Make sure to replace the AdSense placeholders 
+                            with your real Publisher ID and Ad Slot IDs once you're approved!
+                        </div>
+                    </article>
+
+                    <!-- Sidebar / Below post ad example -->
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXX"
+                             data-ad-slot="YOUR_AD_SLOT_ID_2"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <article>
+                        <h2>How to Build a Blog on GitHub Pages</h2>
+                        <p class="post-date">Published: June 1, 2026</p>
+                        <p>
+                            GitHub Pages is an amazing free platform to host your personal blog or portfolio. 
+                            In this post, I'll walk you through the basics and why I chose it for my creative projects.
+                        </p>
+                        <p>
+                            The beauty of GitHub Pages is its simplicity. You don't need to worry about server 
+                            management, hosting fees, or complicated deployments. Just push your code to GitHub, 
+                            and your site is live in seconds!
+                        </p>
+                        <p>
+                            Whether you're a developer, designer, or writer, GitHub Pages gives you a free, 
+                            fast, and reliable way to share your work with the world. And with AdSense integration, 
+                            you can even monetize your content!
+                        </p>
+                    </article>
+
+                    <article>
+                        <h2>Top 5 Creative Ideas for Your Next Project</h2>
+                        <p class="post-date">Published: May 28, 2026</p>
+                        <p>
+                            Feeling stuck or uninspired? Here are 5 creative project ideas that could spark your 
+                            next big creation:
+                        </p>
+                        <p>
+                            <strong>1. Interactive Portfolio:</strong> Build a portfolio that showcases your work 
+                            in unique, interactive ways that stand out from the crowd.
+                        </p>
+                        <p>
+                            <strong>2. Personal Brand Blog:</strong> Start a blog around your expertise and build 
+                            an audience that values your insights.
+                        </p>
+                        <p>
+                            <strong>3. Open Source Contribution:</strong> Contribute to projects you love and 
+                            make a real impact in the community.
+                        </p>
+                        <p>
+                            <strong>4. Side Project:</strong> Build that project you've been thinking about for 
+                            months. Now is the perfect time!
+                        </p>
+                        <p>
+                            <strong>5. Tutorial Series:</strong> Create step-by-step tutorials teaching others 
+                            something you're passionate about.
+                        </p>
+                    </article>
+
+                    <article>
+                        <h2>Bafana Bafana: South Africa's Renewed Ambition at the 2026 FIFA World Cup</h2>
+                        <p class="post-date">Published: June 1, 2026</p>
+                        <p>
+                            South Africa's national football team, affectionately known as <strong>Bafana Bafana</strong>, has officially returned to the global stage after qualifying for the <strong>2026 FIFA World Cup</strong>. As one of Africa's most storied football nations, the team enters the tournament with renewed hope under Belgian coach Hugo Broos, aiming to achieve their first-ever knockout-stage appearance.
+                        </p>
+
+                        <h3>Group Stage Challenge</h3>
+                        <p>
+                            South Africa finds itself in <strong>Group A</strong> alongside co-hosts <strong>Mexico</strong>, <strong>South Korea</strong>, and <strong>Czechia</strong>. With all teams starting on zero points, Bafana Bafana will open their campaign against Mexico, followed by challenging fixtures that will test their depth and tactical discipline.
+                        </p>
+
+                        <h3>Recent Form and Preparation</h3>
+                        <p>
+                            Recent matches show a solid but mixed run of results:
+                        </p>
+                        <ul>
+                            <li>Zimbabwe 0-0 South Africa</li>
+                            <li>South Africa 3-0 Rwanda</li>
+                            <li>South Africa 3-1 Zambia</li>
+                            <li>South Africa 2-1 Angola</li>
+                            <li>Egypt 1-0 South Africa</li>
+                        </ul>
+                        <p>
+                            These results highlight Bafana's strength against regional opponents while exposing occasional vulnerabilities against stronger sides. Their final warm-up friendly against Nicaragua on 29 May 2026 ended in a 0-0 draw, with Lyle Foster hitting the post from the penalty spot. Coach Broos described the opponent as "very negative" but used the game to rotate the squad and test fitness.
+                        </p>
+
+                        <h3>Current Squad Strength</h3>
+                        <p>
+                            The squad blends experienced campaigners with emerging talent:
+                        </p>
+                        <p>
+                            <strong>Goalkeepers:</strong> Ronwen Williams (captain), Sipho Chaine, Ricardo Goss
+                        </p>
+                        <p>
+                            <strong>Defenders:</strong> Khuliso Mudau, Aubrey Modiba, Nkosinathi Sibisi, Mbekezeli Mbokazi, Olwethu Makhanya, Bradley Cross, and others
+                        </p>
+                        <p>
+                            <strong>Midfielders:</strong> Teboho Mokoena, Themba Zwane, Relebohile Mofokeng, Jayden Adams, Thalente Mbatha
+                        </p>
+                        <p>
+                            <strong>Forwards:</strong> Lyle Foster, Evidence Makgopa, Iqraam Rayners, Oswin Appollis
+                        </p>
+                        <p>
+                            This mix gives Broos flexibility in both defensive solidity and attacking flair. Williams remains a reliable last line of defence, while players like Foster and Mokoena provide crucial Premier League and European experience.
+                        </p>
+
+                        <h3>Historical Context</h3>
+                        <p>
+                            South Africa has appeared at the FIFA World Cup in 1998, 2002, and as hosts in 2010, but have never progressed beyond the group stage. On the continental front, they remain proud 1996 Africa Cup of Nations champions and finished third in 2023. Their overall international record stands at roughly 45% wins across nearly 500 matches.
+                        </p>
+
+                        <h3>What to Expect from Bafana in 2026</h3>
+                        <p>
+                            The 2026 tournament represents a golden opportunity for South African football. With home support from the African diaspora and growing domestic excitement, Bafana Bafana will look to defy the odds in a tough group. Key to their success will be clinical finishing, defensive organisation, and leveraging set-pieces where they have shown strength in qualifiers.
+                        </p>
+                        <p>
+                            As the countdown to their opening match intensifies, one thing is clear: after years of rebuilding, Bafana Bafana are back on the biggest stage with belief and purpose. South African fans will be hoping this is the squad that finally breaks the group-stage barrier and delivers a memorable run for the Rainbow Nation.
+                        </p>
+                        <p>
+                            <em>Data sourced from Sofascore, FIFA, and recent match reports as of June 2026.</em>
+                        </p>
+                    </article>
+
+                </main>
+
+                <footer>
+                    <p>&copy; 2026 Shawn Caramel. All rights reserved.</p>
+                    <p>Built with ❤️ on GitHub Pages</p>
+                </footer>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <!-- About Me -->
+            <div class="sidebar-box">
+                <h3>👋 About Me</h3>
+                <p>
+                    Hi, I'm Shawn! Passionate about South African football, tech, and creative writing. 
+                    I share honest analysis and thoughts on my blog. Join me on this journey!
+                </p>
             </div>
 
-            <article>
-                <h2>Welcome to My Creative Blog! 🚀</h2>
-                <p class="post-date">Published: June 1, 2026</p>
-                <p>
-                    Welcome to my space on the internet! I'm excited to share my journey, ideas, and 
-                    experiences with you. This blog is all about creativity, learning, and growth.
-                </p>
-                <p>
-                    Whether you're here for tech tutorials, design inspiration, or just to read about 
-                    my random thoughts, I hope you find something valuable. I'm committed to posting 
-                    high-quality, original content regularly.
-                </p>
-                <div class="note">
-                    <strong>📝 Note for creators:</strong> Make sure to replace the AdSense placeholders 
-                    with your real Publisher ID and Ad Slot IDs once you're approved!
-                </div>
-            </article>
-
-            <!-- Sidebar / Below post ad example -->
-            <div class="ad-container">
-                <div class="ad-label">Advertisement</div>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXXXX"
-                     data-ad-slot="YOUR_AD_SLOT_ID_2"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-
-            <article>
-                <h2>How to Build a Blog on GitHub Pages</h2>
-                <p class="post-date">Published: June 1, 2026</p>
-                <p>
-                    GitHub Pages is an amazing free platform to host your personal blog or portfolio. 
-                    In this post, I'll walk you through the basics and why I chose it for my creative projects.
-                </p>
-                <p>
-                    The beauty of GitHub Pages is its simplicity. You don't need to worry about server 
-                    management, hosting fees, or complicated deployments. Just push your code to GitHub, 
-                    and your site is live in seconds!
-                </p>
-                <p>
-                    Whether you're a developer, designer, or writer, GitHub Pages gives you a free, 
-                    fast, and reliable way to share your work with the world. And with AdSense integration, 
-                    you can even monetize your content!
-                </p>
-            </article>
-
-            <article>
-                <h2>Top 5 Creative Ideas for Your Next Project</h2>
-                <p class="post-date">Published: May 28, 2026</p>
-                <p>
-                    Feeling stuck or uninspired? Here are 5 creative project ideas that could spark your 
-                    next big creation:
-                </p>
-                <p>
-                    <strong>1. Interactive Portfolio:</strong> Build a portfolio that showcases your work 
-                    in unique, interactive ways that stand out from the crowd.
-                </p>
-                <p>
-                    <strong>2. Personal Brand Blog:</strong> Start a blog around your expertise and build 
-                    an audience that values your insights.
-                </p>
-                <p>
-                    <strong>3. Open Source Contribution:</strong> Contribute to projects you love and 
-                    make a real impact in the community.
-                </p>
-                <p>
-                    <strong>4. Side Project:</strong> Build that project you've been thinking about for 
-                    months. Now is the perfect time!
-                </p>
-                <p>
-                    <strong>5. Tutorial Series:</strong> Create step-by-step tutorials teaching others 
-                    something you're passionate about.
-                </p>
-            </article>
-
-            <article>
-                <h2>Bafana Bafana: South Africa's Renewed Ambition at the 2026 FIFA World Cup</h2>
-                <p class="post-date">Published: June 1, 2026</p>
-                <p>
-                    South Africa's national football team, affectionately known as <strong>Bafana Bafana</strong>, has officially returned to the global stage after qualifying for the <strong>2026 FIFA World Cup</strong>. As one of Africa's most storied football nations, the team enters the tournament with renewed hope under Belgian coach Hugo Broos, aiming to achieve their first-ever knockout-stage appearance.
-                </p>
-
-                <h3>Group Stage Challenge</h3>
-                <p>
-                    South Africa finds itself in <strong>Group A</strong> alongside co-hosts <strong>Mexico</strong>, <strong>South Korea</strong>, and <strong>Czechia</strong>. With all teams starting on zero points, Bafana Bafana will open their campaign against Mexico, followed by challenging fixtures that will test their depth and tactical discipline.
-                </p>
-
-                <h3>Recent Form and Preparation</h3>
-                <p>
-                    Recent matches show a solid but mixed run of results:
-                </p>
-                <ul>
-                    <li>Zimbabwe 0-0 South Africa</li>
-                    <li>South Africa 3-0 Rwanda</li>
-                    <li>South Africa 3-1 Zambia</li>
-                    <li>South Africa 2-1 Angola</li>
-                    <li>Egypt 1-0 South Africa</li>
+            <!-- Recent Posts -->
+            <div class="sidebar-box">
+                <h3>📝 Recent Posts</h3>
+                <ul class="recent-posts-list">
+                    <li><a href="#bafana">→ Bafana Bafana at 2026 World Cup</a></li>
+                    <li><a href="#github">→ How to Build a Blog on GitHub Pages</a></li>
+                    <li><a href="#creative">→ Top 5 Creative Ideas</a></li>
+                    <li><a href="#welcome">→ Welcome to My Blog</a></li>
                 </ul>
-                <p>
-                    These results highlight Bafana's strength against regional opponents while exposing occasional vulnerabilities against stronger sides. Their final warm-up friendly against Nicaragua on 29 May 2026 ended in a 0-0 draw, with Lyle Foster hitting the post from the penalty spot. Coach Broos described the opponent as "very negative" but used the game to rotate the squad and test fitness.
-                </p>
+            </div>
 
-                <h3>Current Squad Strength</h3>
-                <p>
-                    The squad blends experienced campaigners with emerging talent:
-                </p>
-                <p>
-                    <strong>Goalkeepers:</strong> Ronwen Williams (captain), Sipho Chaine, Ricardo Goss
-                </p>
-                <p>
-                    <strong>Defenders:</strong> Khuliso Mudau, Aubrey Modiba, Nkosinathi Sibisi, Mbekezeli Mbokazi, Olwethu Makhanya, Bradley Cross, and others
-                </p>
-                <p>
-                    <strong>Midfielders:</strong> Teboho Mokoena, Themba Zwane, Relebohile Mofokeng, Jayden Adams, Thalente Mbatha
-                </p>
-                <p>
-                    <strong>Forwards:</strong> Lyle Foster, Evidence Makgopa, Iqraam Rayners, Oswin Appollis
-                </p>
-                <p>
-                    This mix gives Broos flexibility in both defensive solidity and attacking flair. Williams remains a reliable last line of defence, while players like Foster and Mokoena provide crucial Premier League and European experience.
-                </p>
+            <!-- Categories -->
+            <div class="sidebar-box">
+                <h3>🏷️ Popular Topics</h3>
+                <div class="category-tags">
+                    <span class="tag">#Football</span>
+                    <span class="tag">#Sports</span>
+                    <span class="tag">#Tech</span>
+                    <span class="tag">#SouthAfrica</span>
+                    <span class="tag">#Creative</span>
+                </div>
+            </div>
 
-                <h3>Historical Context</h3>
+            <!-- Newsletter -->
+            <div class="sidebar-box">
+                <h3>📬 Stay Updated</h3>
                 <p>
-                    South Africa has appeared at the FIFA World Cup in 1998, 2002, and as hosts in 2010, but have never progressed beyond the group stage. On the continental front, they remain proud 1996 Africa Cup of Nations champions and finished third in 2023. Their overall international record stands at roughly 45% wins across nearly 500 matches.
+                    Get new articles straight to your inbox. I post twice a week with fresh insights!
                 </p>
+                <input type="email" class="subscribe-input" placeholder="your@email.com">
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
 
-                <h3>What to Expect from Bafana in 2026</h3>
-                <p>
-                    The 2026 tournament represents a golden opportunity for South African football. With home support from the African diaspora and growing domestic excitement, Bafana Bafana will look to defy the odds in a tough group. Key to their success will be clinical finishing, defensive organisation, and leveraging set-pieces where they have shown strength in qualifiers.
-                </p>
-                <p>
-                    As the countdown to their opening match intensifies, one thing is clear: after years of rebuilding, Bafana Bafana are back on the biggest stage with belief and purpose. South African fans will be hoping this is the squad that finally breaks the group-stage barrier and delivers a memorable run for the Rainbow Nation.
-                </p>
-                <p>
-                    <em>Data sourced from Sofascore, FIFA, and recent match reports as of June 2026.</em>
-                </p>
-            </article>
-
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Shawn Caramel. All rights reserved.</p>
-            <p>Built with ❤️ on GitHub Pages</p>
-        </footer>
+            <!-- Social Links -->
+            <div class="sidebar-box">
+                <h3>🤝 Connect With Me</h3>
+                <p style="margin-bottom: 15px;">Follow me on social media for daily updates</p>
+                <div class="social-links">
+                    <a href="#twitter" title="Twitter">𝕏</a>
+                    <a href="#instagram" title="Instagram">📸</a>
+                    <a href="#linkedin" title="LinkedIn">💼</a>
+                    <a href="mailto:your@email.com" title="Email">✉️</a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
