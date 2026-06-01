@@ -131,6 +131,37 @@
             padding: 25px;
         }
         
+        /* LOADING SPINNER */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #1a472a;
+            font-weight: bold;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1a472a;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
         /* PSL STANDINGS */
         .psl-standings {
             background: white;
@@ -376,6 +407,13 @@
             color: #1a472a;
         }
         
+        .last-updated {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 10px;
+            text-align: right;
+        }
+        
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .wrapper {
@@ -433,84 +471,14 @@
                 <div class="section-header">📊 PSL Standings 2024/25</div>
                 <div class="section-content">
                     <div class="psl-standings">
-                        <table class="standings-table">
-                            <thead>
-                                <tr>
-                                    <th>Pos</th>
-                                    <th>Team</th>
-                                    <th>P</th>
-                                    <th>W</th>
-                                    <th>D</th>
-                                    <th>L</th>
-                                    <th>GF</th>
-                                    <th>GA</th>
-                                    <th>GD</th>
-                                    <th><span class="points">Pts</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="team-name">Kaizer Chiefs</td>
-                                    <td>15</td>
-                                    <td>10</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>28</td>
-                                    <td>15</td>
-                                    <td>+13</td>
-                                    <td><span class="points">32</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="team-name">Orlando Pirates</td>
-                                    <td>15</td>
-                                    <td>9</td>
-                                    <td>3</td>
-                                    <td>3</td>
-                                    <td>26</td>
-                                    <td>14</td>
-                                    <td>+12</td>
-                                    <td><span class="points">30</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="team-name">Mamelodi Sundowns</td>
-                                    <td>15</td>
-                                    <td>8</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                    <td>24</td>
-                                    <td>12</td>
-                                    <td>+12</td>
-                                    <td><span class="points">28</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td class="team-name">Stellenbosch FC</td>
-                                    <td>15</td>
-                                    <td>7</td>
-                                    <td>3</td>
-                                    <td>5</td>
-                                    <td>21</td>
-                                    <td>18</td>
-                                    <td>+3</td>
-                                    <td><span class="points">24</span></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td class="team-name">AmaZulu FC</td>
-                                    <td>15</td>
-                                    <td>6</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                    <td>19</td>
-                                    <td>17</td>
-                                    <td>+2</td>
-                                    <td><span class="points">22</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div id="standings-content">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Loading live PSL standings...</p>
+                            </div>
+                        </div>
+                        <div id="error-message"></div>
+                        <div class="last-updated" id="last-updated"></div>
                     </div>
                 </div>
             </div>
@@ -627,7 +595,7 @@
             <div class="sidebar-box" id="about">
                 <h3>👋 About Mzansi Diski</h3>
                 <p>
-                    Your ultimate destination for South African and African football coverage. Real-time PSL standings, transfer news, Bafana Bafana updates, and in-depth analysis from a local perspective. Created by Shawn Caramel.
+                    Your ultimate destination for South African and African football coverage. Real-time PSL standings powered by Football-Data.org, transfer news, Bafana Bafana updates, and in-depth analysis from a local perspective. Created by Shawn Caramel.
                 </p>
             </div>
 
@@ -677,13 +645,15 @@
                 </div>
             </div>
 
-            <!-- Quick Stats -->
+            <!-- API Info -->
             <div class="sidebar-box">
-                <h3>📊 Quick Stats</h3>
-                <p><strong>PSL Matches Played:</strong> 105</p>
-                <p><strong>Top Scorer:</strong> 15 goals</p>
-                <p><strong>Biggest Win:</strong> 4-0</p>
-                <p><strong>Avg Goals/Match:</strong> 2.8</p>
+                <h3>⚡ Live Data</h3>
+                <p style="font-size: 0.9rem;">
+                    <strong>Powered by:</strong> Football-Data.org
+                </p>
+                <p style="font-size: 0.9rem;">
+                    Real-time PSL data updates every 5 minutes
+                </p>
             </div>
         </div>
     </div>
@@ -694,6 +664,135 @@
         <p>Real-time PSL standings | Exclusive News | Transfer Rumors | Bafana Bafana Coverage</p>
         <p>Built with ❤️ for African Football Fans by Shawn Caramel</p>
     </footer>
+
+    <!-- JAVASCRIPT FOR FOOTBALL-DATA.org API -->
+    <script>
+        // ⚠️ IMPORTANT: Replace 'YOUR_API_KEY_HERE' with your free API key from https://www.football-data.org/
+        const API_KEY = 'YOUR_API_KEY_HERE';
+        const API_URL = 'https://api.football-data.org/v4';
+
+        // Fetch PSL Standings from Football-Data.org
+        async function fetchPSLStandings() {
+            try {
+                const response = await fetch(`${API_URL}/competitions/PSL/standings`, {
+                    headers: { 'X-Auth-Token': API_KEY }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        throw new Error('Invalid API key. Please add your Football-Data.org API key.');
+                    }
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                updateStandingsTable(data);
+                updateLastUpdated();
+            } catch (error) {
+                console.error('Error fetching standings:', error);
+                showError(error.message);
+            }
+        }
+
+        // Update the standings table with real data
+        function updateStandingsTable(data) {
+            const standingsContent = document.getElementById('standings-content');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Clear error message
+            errorMessage.innerHTML = '';
+
+            if (!data.standings || !data.standings[0]) {
+                showError('No standings data available');
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.className = 'standings-table';
+            
+            // Create header
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Pos</th>
+                    <th>Team</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>GD</th>
+                    <th><span class="points">Pts</span></th>
+                </tr>
+            `;
+            table.appendChild(thead);
+
+            // Create body
+            const tbody = document.createElement('tbody');
+            data.standings[0].table.forEach(team => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${team.position}</td>
+                    <td class="team-name">${team.team.name}</td>
+                    <td>${team.playedGames}</td>
+                    <td>${team.won}</td>
+                    <td>${team.draw}</td>
+                    <td>${team.lost}</td>
+                    <td>${team.goalsFor}</td>
+                    <td>${team.goalsAgainst}</td>
+                    <td>${team.goalDifference}</td>
+                    <td><span class="points">${team.points}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+
+            standingsContent.innerHTML = '';
+            standingsContent.appendChild(table);
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.className = 'error-message';
+            errorDiv.innerHTML = `⚠️ ${message}`;
+            
+            const standingsContent = document.getElementById('standings-content');
+            standingsContent.innerHTML = `
+                <div class="error-message">
+                    <p>${message}</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">
+                        <strong>Setup Instructions:</strong><br>
+                        1. Go to <a href="https://www.football-data.org/" target="_blank" style="color: #1a472a; text-decoration: underline;">Football-Data.org</a><br>
+                        2. Sign up for a free account<br>
+                        3. Copy your API key<br>
+                        4. Replace 'YOUR_API_KEY_HERE' in the JavaScript (around line 380)
+                    </p>
+                </div>
+            `;
+        }
+
+        // Update last updated time
+        function updateLastUpdated() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true 
+            });
+            document.getElementById('last-updated').innerHTML = `Last updated: ${timeString}`;
+        }
+
+        // Fetch standings on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPSLStandings();
+            
+            // Refresh every 5 minutes
+            setInterval(fetchPSLStandings, 5 * 60 * 1000);
+        });
+    </script>
 
 </body>
 </html>
