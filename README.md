@@ -1,3 +1,3 @@
-# shawncaramel1.github.co.za
+# shawncaramel1.github.io
  My Creative Blog
 
